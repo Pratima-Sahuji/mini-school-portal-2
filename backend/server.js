@@ -6,7 +6,7 @@ const studentRoutes = require("./routes/studentRoutes");
 const attendanceRoutes = require("./routes/attendanceRouter");
 const cookieParser = require("cookie-parser");
 
-// backend server.js
+
 const cors = require("cors");
 
 
@@ -17,7 +17,7 @@ app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-// Routes
+
 app.use("/api/user", userRoutes);
 app.use("/api/teachers", teacherRoutes);
 app.use("/api/students", studentRoutes);

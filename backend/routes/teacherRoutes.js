@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router(); // ✅ Express router
+const router = express.Router(); 
 
 const {
   getTeacherById,
