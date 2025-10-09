@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+
 function EditStudent() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -20,7 +23,7 @@ function EditStudent() {
   const fetchStudent = async () => {
     try {
       const token = localStorage.getItem("accessToken");
-      const res = await axios.get(`http://localhost:5000/api/students/${id}`, {
+      const res = await axios.get(`${API_URL}/api/students/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setForm(res.data);
@@ -42,7 +45,7 @@ function EditStudent() {
       const token = localStorage.getItem("accessToken");
       const user = JSON.parse(localStorage.getItem("user"));
       
-      await axios.put(`http://localhost:5000/api/students/${id}`, form, {
+      await axios.put(`${API_URL}/api/students/${id}`, form, {
         headers: { Authorization: `Bearer ${token}` },
       });
       

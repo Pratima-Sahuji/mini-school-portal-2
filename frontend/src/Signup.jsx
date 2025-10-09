@@ -3,6 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+
 function Signup() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -29,7 +32,7 @@ function Signup() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/user/signup",
+        `${API_URL}/api/user/signup`,
         form,
         { withCredentials: true }
       );
@@ -39,7 +42,6 @@ function Signup() {
 
 
 
-      // Direct navigation based on role
       if (res.data.user.role.toLowerCase() === "student") navigate("/student-dashboard");
        else navigate("/teacher-dashboard");
 

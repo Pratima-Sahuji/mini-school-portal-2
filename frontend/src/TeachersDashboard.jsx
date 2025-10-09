@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 
 function TeacherDashboard() {
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ function TeacherDashboard() {
         }
 
         const res = await axios.get(
-          `http://localhost:5000/api/teachers/${user.id}`,
+          `${API_URL}/api/teachers/${user.id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

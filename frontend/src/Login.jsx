@@ -3,6 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+
 function Login() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: "", password: "" });
@@ -13,7 +16,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/user/login", form, { withCredentials: true });
+      const res = await axios.post(`${API_URL}/api/user/login`, form, { withCredentials: true });
       
      
       localStorage.setItem("accessToken", res.data.accessToken);

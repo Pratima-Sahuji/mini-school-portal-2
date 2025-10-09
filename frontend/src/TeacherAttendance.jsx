@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+
 
 function TeacherAttendance() {
   const [students, setStudents] = useState([]);
@@ -11,7 +14,7 @@ function TeacherAttendance() {
 
   const fetchStudents = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/students", {
+      const res = await axios.get(`${API_URL}/api/students`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // Sort students by roll number
@@ -39,7 +42,7 @@ function TeacherAttendance() {
         if (!status) continue;
 
         await axios.post(
-          "http://localhost:5000/api/attendance/",
+          `${API_URL}/api/attendance/`,
           {
             student_id: student.id,
             date: new Date().toISOString().split("T")[0],

@@ -3,6 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import api from "./api";
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+
 function TeacherStudents() {
   const navigate = useNavigate();
   const [students, setStudents] = useState([]);
@@ -26,7 +29,7 @@ function TeacherStudents() {
         setLoading(true);
         const token = localStorage.getItem("accessToken");
         
-        const res = await axios.get("http://localhost:5000/api/students", {
+        const res = await axios.get(`${API_URL}/api/students`, {
           headers: { 
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -67,7 +70,7 @@ function TeacherStudents() {
 
     try {
       const token = localStorage.getItem("accessToken");
-      await axios.delete(`http://localhost:5000/api/students/${id}`, {
+      await axios.delete(`${API_URL}/api/students/${id}`, {
         headers: { 
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
