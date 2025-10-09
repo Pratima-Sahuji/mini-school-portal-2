@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: school-portal-backend
+    name: mini-school-portal-2-0-backend
     env: node
     rootDir: backend
     buildCommand: npm install && npm ci
@@ -19,8 +19,8 @@ services:
       - key: REFRESH_TOKEN_EXPIRES_IN
         value: 7d
 
-  - type: web
-    name: school-portal-frontend
+  - type: static
+    name: mini-school-portal-2-0-frontend
     env: static
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: ./frontend/dist
