@@ -17,7 +17,7 @@ const app = express();
 
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://mini-school-portal-frontend.onrender.com'
+  'https://mini-school-portal-2-0-frontend.onrender.com'
 ];
 
 app.use(cors({ 
