@@ -3,7 +3,7 @@ services:
     name: mini-school-portal-2-0-backend
     env: node
     rootDir: backend
-    buildCommand: npm install && npm ci
+    buildCommand: npm install 
     startCommand: npm start
     envVars:
       - key: NODE_ENV
@@ -19,11 +19,11 @@ services:
       - key: REFRESH_TOKEN_EXPIRES_IN
         value: 7d
 
-  - type: static
-    name: mini-school-portal-2-0-frontend
-    env: static
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: ./frontend/dist
-    envVars:
-      - key: VITE_API_URL
-        value: https://school-portal-backend.onrender.com
+  # - type: static
+  #   name: mini-school-portal-2-0-frontend
+  #   env: static
+  #   buildCommand: cd frontend && npm install && npm run build
+  #   staticPublishPath: ./frontend/dist
+  #   envVars:
+  #     - key: VITE_API_URL
+  #       value: https://school-portal-backend.onrender.com
